@@ -3,3 +3,4 @@
 *.tfstate.*
 *.tfvars
 *.csv
+build/
