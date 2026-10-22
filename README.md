@@ -1,6 +1,6 @@
 # AWS Security Guardrail
 
-An AWS security baseline built entirely in Terraform that **detects misconfigurations and fixes them automatically**. When anyone opens SSH (port 22) to the internet, an EventBridge + Lambda pipeline revokes the rule within about **XX seconds** and emails an alert naming who made the change. Every control is mapped to **NIST SP 800-53 Rev 5**, the control catalog behind FedRAMP.
+An AWS security baseline built entirely in Terraform that **detects misconfigurations and fixes them automatically**. When anyone opens SSH (port 22) to the internet, an EventBridge + Lambda pipeline revokes the rule within about **60 seconds** and emails an alert naming who made the change. Every control is mapped to **NIST SP 800-53 Rev 5**, the control catalog behind FedRAMP.
 
 ![Auto-remediation alert email](docs/images/remediation-email.png)
 
