@@ -21,7 +21,8 @@ resource "aws_iam_role" "remediate_ssh" {
 
 resource "aws_cloudwatch_log_group" "remediate_ssh" {
   name              = "/aws/lambda/guardrail-remediate-ssh"
-  retention_in_days = 30
+  retention_in_days = 365
+  kms_key_id        = aws_kms_key.main.arn
 }
 
 data "aws_iam_policy_document" "remediate_ssh" {
@@ -66,6 +67,7 @@ resource "aws_lambda_function" "remediate_ssh" {
   filename         = data.archive_file.remediate_ssh.output_path
   source_code_hash = data.archive_file.remediate_ssh.output_base64sha256
   timeout          = 30
+  kms_key_arn      = aws_kms_key.main.arn
 
   environment {
     variables = {
