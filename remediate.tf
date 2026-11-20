@@ -60,6 +60,9 @@ resource "aws_iam_role_policy" "remediate_ssh" {
 }
 
 resource "aws_lambda_function" "remediate_ssh" {
+  #checkov:skip=CKV_AWS_117:Function only calls AWS APIs; VPC placement adds NAT/endpoint cost with no security benefit
+  #checkov:skip=CKV_AWS_115:New-account concurrency limit (10) prevents reserving concurrency; single EventBridge trigger
+  #checkov:skip=CKV_AWS_50:X-Ray is performance tracing, not a security control; CloudWatch Logs captures audit records
   function_name    = "guardrail-remediate-ssh"
   role             = aws_iam_role.remediate_ssh.arn
   runtime          = "python3.13"

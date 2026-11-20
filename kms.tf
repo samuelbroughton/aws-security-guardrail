@@ -1,4 +1,7 @@
 data "aws_iam_policy_document" "kms" {
+  #checkov:skip=CKV_AWS_356:Key policy - Resource "*" refers only to this key
+  #checkov:skip=CKV_AWS_111:Key policy - Resource "*" refers only to this key; service access constrained by conditions
+  #checkov:skip=CKV_AWS_109:Key policy - Resource "*" refers only to this key; account root retains admin per AWS guidance
   statement {
     sid       = "AccountAdmin"
     actions   = ["kms:*"]

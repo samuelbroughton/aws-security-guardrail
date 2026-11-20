@@ -83,6 +83,7 @@ resource "aws_s3_bucket_policy" "logs" {
 }
 
 resource "aws_cloudtrail" "main" {
+  #checkov:skip=CKV_AWS_252:Per-log-file SNS notifications are noise; alerting is handled by EventBridge rules
   name                          = local.trail_name
   s3_bucket_name                = aws_s3_bucket.logs.id
   is_multi_region_trail         = true
